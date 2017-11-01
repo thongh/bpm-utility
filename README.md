@@ -11,10 +11,11 @@
 ## Developing
 
 Prepare the packages:
-npm install -g bower
-npm install -g grunt-cli
-npm install -g yo
-npm install -g generator-meanjs
+
+- npm install -g bower
+- npm install -g grunt-cli
+- npm install -g yo
+- npm install -g generator-meanjs
 
 
 ### Tools
