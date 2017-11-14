@@ -10,17 +10,12 @@
 
 ## Developing
 
-Prepare the packages:
+Setup development:
 
-- npm install -g bower
-- npm install -g grunt-cli
-- npm install -g yo
-- npm install -g generator-meanjs
+- Clone the entire project
+- Run npm install
+- Run npm start
 
 
 ### Tools
 
-Created with [Nodeclipse](https://github.com/Nodeclipse/nodeclipse-1)
- ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
-
-Nodeclipse is free open-source project that grows with your contributions.
