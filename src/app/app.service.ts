@@ -1,3 +1,4 @@
+console.log("Angular src - app.service.ts - START");
 import { Injectable } from '@angular/core';
 
 export type InternalStateType = {
@@ -44,3 +45,4 @@ export class AppState {
     return JSON.parse(JSON.stringify( object ));
   }
 }
+console.log("Angular src - app.service.ts - DONE");

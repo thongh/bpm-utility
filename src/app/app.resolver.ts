@@ -1,3 +1,5 @@
+console.log("Angular src - app.resolver.ts - START");
+
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -16,3 +18,5 @@ export class DataResolver implements Resolve<any> {
 export const APP_RESOLVER_PROVIDERS = [
   DataResolver
 ];
+
+console.log("Angular src - app.resolver.ts - END");

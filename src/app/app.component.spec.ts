@@ -1,3 +1,4 @@
+console.log("Angular src - app.component.spec.ts - START");
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import {
   inject,
@@ -64,3 +65,4 @@ describe(`App`, () => {
   });
 
 });
+console.log("Angular src - app.component.spec.ts - END");

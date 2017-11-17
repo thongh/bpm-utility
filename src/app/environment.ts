@@ -1,3 +1,4 @@
+console.log("Angular src - environment.ts - START");
 /**
  * Angular 2
  */
@@ -73,3 +74,5 @@ export const decorateModuleRef = _decorateModuleRef;
 export const ENV_PROVIDERS = [
   ...PROVIDERS
 ];
+
+console.log("Angular src - environment.ts - DONE");

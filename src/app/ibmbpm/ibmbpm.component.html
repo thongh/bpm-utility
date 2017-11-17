@@ -1,7 +1,18 @@
-<p>
-  ibmbpm works!
-</p>
-<button (click)="onClickMe()">Call Rest</button>
-<p>{{clickMessage}}</p>
-<p>{{restStatus}}</p>
-<p>{{restBody}}</p>
+<mat-tab-group class="demo-tab-group">
+  <mat-tab label="Explore">
+    <div class="demo-tab-content">
+      Explore your BPM process server.
+	  <app-rest-tester></app-rest-tester>
+    </div>
+  </mat-tab>
+  <mat-tab label="Test">
+    <div class="demo-tab-content">
+      Create your BPM testing suites.
+    </div>  
+  </mat-tab>
+  <mat-tab label="Health Check">
+     <div class="demo-tab-content">
+      Assess your BPM system health status.
+     </div>
+  </mat-tab>
+</mat-tab-group>

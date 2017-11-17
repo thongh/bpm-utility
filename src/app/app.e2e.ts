@@ -1,3 +1,4 @@
+console.log("Angular src - app.e2e.ts - START");
 import { browser, by, element } from 'protractor';
 import 'tslib';
 
@@ -32,3 +33,4 @@ describe('App', () => {
   });
 
 });
+console.log("Angular src - app.e2e.ts - DONE");

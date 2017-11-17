@@ -1,4 +1,5 @@
 import express from 'express';
+
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
@@ -18,12 +19,16 @@ import appRoot from 'app-root-path';
 import innograph from 'innograph'
 import postCtrl from '../controllers/post.controller';
 
-console.log("Initiating express --------------------");
-
 const app = express();
 
 if (config.env === 'development') {
   app.use(logger('dev'));
+}
+
+// Ignore Node TLS, bad practice, should be replaced 
+if ('development' == app.get('env')) {
+    console.log("Rejecting node tls");
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 }
 
 // parse body params and attache them to req.body
@@ -97,5 +102,3 @@ app.use((err, req, res, next) => // eslint-disable-line no-unused-vars
 );
 
 export default app;
-
-console.log("Initiating express -------------------- DONE");

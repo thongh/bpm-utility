@@ -1,3 +1,5 @@
+console.log("Angular src - app.routes.ts - START");
+
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home';
 import { ReactComponent } from './react';
@@ -16,3 +18,5 @@ export const ROUTES: Routes = [
   { path: 'ibmbpm', component: IbmbpmComponent },
   { path: '**',    component: NoContentComponent },
 ];
+
+console.log("Angular src - app.routes.ts - DONE");

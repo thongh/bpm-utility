@@ -1,7 +1,10 @@
+console.log("Angular src - app.module.ts - START");
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NoConflictStyleCompatibilityMode } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { ApolloModule } from 'apollo-angular';
 import { client } from '../graphql.client';
 import {
@@ -21,7 +24,8 @@ import {
   MatToolbarModule,
   MatCardModule,
   MatListModule,
-  MatGridListModule
+  MatGridListModule,
+  MatSidenavModule
 } from '@angular/material';
 import 'hammerjs';
 
@@ -44,6 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import '../styles/styles.scss';
 import '../styles/headings.css';
 import { IbmbpmComponent } from './ibmbpm/ibmbpm.component';
+import { RestTesterComponent } from './ibmbpm/rest-tester/rest-tester.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -69,6 +74,7 @@ type StoreType = {
     ProfileComponent,
     NoContentComponent,
     IbmbpmComponent,
+    RestTesterComponent,
   ],
   /**
    * Import Angular's modules.
@@ -83,6 +89,8 @@ type StoreType = {
     MatCardModule,
     MatListModule,
     MatGridListModule,
+    MatTabsModule,
+    MatSidenavModule,
 	NoConflictStyleCompatibilityMode,  // from 'md2'
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
     ApolloModule.forRoot(client),
@@ -154,3 +162,4 @@ export class AppModule {
   }
 
 }
+console.log("Angular src - app.module.ts - END");

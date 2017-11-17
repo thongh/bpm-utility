@@ -1,3 +1,4 @@
+console.log("Angular src - app.component.ts - START");
 /**
  * Angular 2 decorators and services
  */
@@ -55,3 +56,4 @@ export class AppComponent implements OnInit {
  * For help or questions please contact us at @AngularClass on twitter
  * or our chat on Slack at https://AngularClass.com/slack-join
  */
+console.log("Angular src - app.component.ts - DONE");
