@@ -10,8 +10,12 @@ import { Http } from '@angular/http';
   encapsulation: ViewEncapsulation.None
 })
 export class RestTesterComponent implements OnInit {
-  
-  constructor(private http: Http) { 
+
+      clickMessage;
+      restStatus;
+      restBody;
+      tiles;
+  constructor(private http: Http) {
       this.clickMessage = '';
       this.restStatus;
       this.restBody = '';
@@ -31,7 +35,7 @@ export class RestTesterComponent implements OnInit {
     this.restStatus = data.status;
     });
   }
-  
+
   ngOnInit() {
   }
 
