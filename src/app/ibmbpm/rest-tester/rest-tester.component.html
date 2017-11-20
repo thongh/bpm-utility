@@ -1,23 +1,67 @@
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav class="example-sidenav">
-    Jolly good!
-  </mat-sidenav>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav-container content">
+    <mat-expansion-panel class="api-list">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          REST interface for BPEL-relate process resources
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="api-list">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          REST interface for federated IBM BPM resources (HTM)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="api-list">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          REST interface for federated IBM BPM resources (BFM)
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="api-list">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          REST interface for BPEL-relate Task resources
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="api-list">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Business Process Manager REST APIs
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-expansion-panel class="api-items">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Process API
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
 
-  <div class="example-sidenav-content">
+      <mat-expansion-panel class="api-items">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Organization API
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <a class="links" href="#">User API</a>
+      </mat-expansion-panel>
+    </mat-expansion-panel>
+    <mat-expansion-panel class="api-list">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Other
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-sidenav>
+  <div class="sidenav-container content-button">
     <button type="button" mat-button (click)="sidenav.open()">
-      Open sidenav
+      <mat-icon>home</mat-icon>
     </button>
   </div>
-
 </mat-sidenav-container>
-<!--  
-<mat-grid-list cols="4" rowHeight="100px">
-  <mat-grid-tile
-      *ngFor="let tile of tiles"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile>
-</mat-grid-list>
-  -->

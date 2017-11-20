@@ -25,8 +25,13 @@ import {
   MatCardModule,
   MatListModule,
   MatGridListModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatMenuModule,
+  MatButtonModule,
+  MatIconModule,
+  MatFormFieldModule
 } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 import 'hammerjs';
 
 /*
@@ -41,7 +46,6 @@ import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { ReactComponent } from './react';
 import { ProfileComponent } from './profile';
-//import { angularProfileCard } from '../../components/main-profile/index';
 import { NoContentComponent } from './no-content';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -89,9 +93,15 @@ type StoreType = {
     MatCardModule,
     MatListModule,
     MatGridListModule,
-    MatTabsModule,
     MatSidenavModule,
-	NoConflictStyleCompatibilityMode,  // from 'md2'
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatTabsModule,
+
+	NoConflictStyleCompatibilityMode,  // from 'Mat2'
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
     ApolloModule.forRoot(client),
   ],
