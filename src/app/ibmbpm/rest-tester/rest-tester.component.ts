@@ -25,16 +25,6 @@ export class RestTesterComponent implements OnInit {
            ];
   }
 
-  public onClickMe() {
-    this.clickMessage = 'Calling a REST API...';
-    this.restStatus = 'n/a';
-    this.http.get("/api/ibmbpm")
-      .subscribe((data) => {
-    console.log(data);
-    this.clickMessage = "DONE";
-    this.restStatus = data.status;
-    });
-  }
 
   ngOnInit() {
   }

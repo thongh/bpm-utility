@@ -22,10 +22,10 @@ import { PostsService } from './posts/posts.service';
   template: `
     <header>
       <mat-toolbar color="primary">
-        <a [routerLink]="['/']" class="logotTxt">MEAN</a>
+        <a [routerLink]="['/']" class="logotTxt">Busiess Process Manager</a>
         <a class="links" [routerLink]="['/posts']">Posts</a>
         <a class="links" [routerLink]="['/react']">react</a>
-		<a class="links" [routerLink]="['/ibmbpm']">ibm bpm</a>
+		<a class="links" [routerLink]="['/ibmbpm']">IBM BPM</a>
       </mat-toolbar>
     </header>
     <router-outlet></router-outlet>
