@@ -23,6 +23,8 @@ import { PostsService } from './posts/posts.service';
     <header>
       <mat-toolbar color="primary">
         <a [routerLink]="['/']" class="logotTxt">Busiess Process Manager</a>
+        <a class="links" [routerLink]="['/posts']">Posts</a>
+        <a class="links" [routerLink]="['/react']">react</a>
 		<a class="links" [routerLink]="['/ibmbpm']">IBM BPM</a>
       </mat-toolbar>
     </header>

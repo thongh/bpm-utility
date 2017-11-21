@@ -48,7 +48,8 @@
             Organization API
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a class="links" href="#">User API</a>
+        <a class="links" [routerLink]="['/']">User</a><br>
+        <a class="links" [routerLink]="['/']">User Details</a>
       </mat-expansion-panel>
     </mat-expansion-panel>
     <mat-expansion-panel class="api-list">
@@ -64,4 +65,5 @@
       <mat-icon>home</mat-icon>
     </button>
   </div>
+  
 </mat-sidenav-container>
