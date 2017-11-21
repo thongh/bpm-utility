@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav-container content">
+  <mat-sidenav #sidenav class="sidenav-container content" mode="side" opened="true">
     <mat-expansion-panel class="api-list">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -60,7 +60,7 @@
     </mat-expansion-panel>
   </mat-sidenav>
   <div class="sidenav-container content-button">
-    <button type="button" mat-button (click)="sidenav.open()">
+    <button type="button" mat-button (click)="sidenav.toggle()">
       <mat-icon>home</mat-icon>
     </button>
   </div>
