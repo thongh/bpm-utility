@@ -1,14 +1,15 @@
 import request from 'request';
 import https from 'https';
+import Api from '../models/api.model';
 
 /**
  * Call BPM Rest API
  */
-function callRestApi(request, response) { 
+function callRestApi(request, response) {
 	console.log("calling rest api from server side");
 	var username = "thongh";
     var password = "Pa55w0rd";
-	
+
     var optionsget = {
 	    host : '192.168.0.114', // here only the domain name
 		// (no http/https !)
@@ -35,10 +36,19 @@ function callRestApi(request, response) {
           console.log("Got error: " + e.message);
           });
       });
-    
-    
-    reqGet.end();
 
+
+    reqGet.end();
 }
 
-export default { callRestApi };
+//load list of apis
+
+function list(params){
+	return Api.list();
+};
+//load list of group for each api
+function listGroup(){
+    return Group.listGroup();
+};
+
+export default { callRestApi,list};

@@ -11,7 +11,7 @@ export const GetPostDetailQuery= gql`
 `;
 
 export const GetPostsQuery = gql`
-  query Posts {
+  query posts {
     posts {
         id
         title

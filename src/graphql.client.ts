@@ -5,7 +5,6 @@ const clientConfig = new ApolloClient({
     uri: '/api/graphql'
   })
 });
-
 export function client(): ApolloClient {
   return clientConfig;
 }
