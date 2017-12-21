@@ -1,6 +1,9 @@
 console.log("Angular src - rest-tester.component.ts - START");
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Apollo, ApolloQueryObservable } from 'apollo-angular';
+import { ApiListInterface } from './graphql/schema';
+import { GetApiList} from './graphql/queries';
 import { Http } from '@angular/http';
 
 @Component({
@@ -15,7 +18,9 @@ export class RestTesterComponent implements OnInit {
       restStatus;
       restBody;
       tiles;
-  constructor(private http: Http) {
+      private apiList: ApolloQueryObservable<ApiListInterface>;
+  constructor(private http: Http, private apollo: Apollo) {
+      this.apollo = apollo;
       this.clickMessage = '';
       this.restStatus;
       this.restBody = '';
@@ -27,6 +32,9 @@ export class RestTesterComponent implements OnInit {
 
 
   ngOnInit() {
+    this.apiList= this.apollo.watchQuery<ApiListInterface>({
+      query: GetApiList
+    }).map(result => result.data.apis) as any;
   }
 
 }

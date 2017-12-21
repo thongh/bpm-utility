@@ -18,6 +18,7 @@ import path from 'path';
 import appRoot from 'app-root-path';
 import innograph from 'innograph'
 import postCtrl from '../controllers/post.controller';
+import ibmbpmCtrl from '../controllers/ibmbpm.controller';
 
 const app = express();
 
@@ -25,7 +26,7 @@ if (config.env === 'development') {
   app.use(logger('dev'));
 }
 
-// Ignore Node TLS, bad practice, should be replaced 
+// Ignore Node TLS, bad practice, should be replaced
 if ('development' == app.get('env')) {
     console.log("Rejecting node tls");
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -60,7 +61,9 @@ app.use(express.static(path.join(appRoot.path, 'dist')));
 
 app.use('/api', routes);
 
-innograph.init('/api/graphql', app, {post: postCtrl});
+innograph.init('/api/graphql', app, {post: postCtrl,
+  api: ibmbpmCtrl
+});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(appRoot.path, 'dist/index.html'));

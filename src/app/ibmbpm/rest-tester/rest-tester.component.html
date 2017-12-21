@@ -1,69 +1,35 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav-container content" mode="side" opened="true">
-    <mat-expansion-panel class="api-list">
+    <mat-expansion-panel class="api-list" *ngFor="let api of apiList | async" >
       <mat-expansion-panel-header>
         <mat-panel-title>
-          REST interface for BPEL-relate process resources
+          {{api.name}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-    </mat-expansion-panel>
-    <mat-expansion-panel class="api-list">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          REST interface for federated IBM BPM resources (HTM)
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-    <mat-expansion-panel class="api-list">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          REST interface for federated IBM BPM resources (BFM)
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-    <mat-expansion-panel class="api-list">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          REST interface for BPEL-relate Task resources
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-    </mat-expansion-panel>
-    <mat-expansion-panel class="api-list">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Business Process Manager REST APIs
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-expansion-panel class="api-items">
+      <mat-expansion-panel class="api-group" *ngFor="let apiGroup of api.childs">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Process API
+            {{apiGroup.name}}
           </mat-panel-title>
         </mat-expansion-panel-header>
+        <mat-expansion-panel class="api-item" *ngFor="let apiItem of apiGroup.childs">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{apiItem.name}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button type="button" class="callBt">
+            Call
+          </button>
+        </mat-expansion-panel>
       </mat-expansion-panel>
-
-      <mat-expansion-panel class="api-items">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Organization API
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <a class="links" [routerLink]="['/']">User</a><br>
-        <a class="links" [routerLink]="['/']">User Details</a>
-      </mat-expansion-panel>
-    </mat-expansion-panel>
-    <mat-expansion-panel class="api-list">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Other
-        </mat-panel-title>
-      </mat-expansion-panel-header>
     </mat-expansion-panel>
   </mat-sidenav>
+<!--...............-->
   <div class="sidenav-container content-button">
     <button type="button" mat-button (click)="sidenav.toggle()">
       <mat-icon>home</mat-icon>
     </button>
   </div>
-  
+
 </mat-sidenav-container>
