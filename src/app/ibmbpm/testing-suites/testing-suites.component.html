@@ -1,0 +1,8 @@
+<button mat-button [matMenuTriggerFor]="menuRef">
+    Process
+</button>
+<mat-menu #menuRef="matMenu">
+    <button mat-menu-item (click)="onClick()">
+        Simple Process Loan
+    </button>
+</mat-menu>

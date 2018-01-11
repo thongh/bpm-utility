@@ -53,6 +53,8 @@ import '../styles/styles.scss';
 import '../styles/headings.css';
 import { IbmbpmComponent } from './ibmbpm/ibmbpm.component';
 import { RestTesterComponent } from './ibmbpm/rest-tester/rest-tester.component';
+import { TestingSuitesComponent } from './ibmbpm/testing-suites/testing-suites.component';
+import { LoanProcessComponent } from './ibmbpm/testing-suites/loan-process/loan-process.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -79,6 +81,8 @@ type StoreType = {
     NoContentComponent,
     IbmbpmComponent,
     RestTesterComponent,
+    TestingSuitesComponent,
+    LoanProcessComponent,
   ],
   /**
    * Import Angular's modules.

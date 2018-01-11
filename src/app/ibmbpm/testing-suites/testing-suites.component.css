@@ -1,0 +1,9 @@
+.mat-button {
+    width: 200px;
+    height: 40px;
+}
+
+.mat-menu .mat-menu-item{
+    width: 25%;
+    height: 40px;
+}
