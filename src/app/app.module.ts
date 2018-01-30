@@ -3,7 +3,7 @@ console.log("Angular src - app.module.ts - START");
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NoConflictStyleCompatibilityMode } from '@angular/material';
+import { NoConflictStyleCompatibilityMode, MatStepper } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ApolloModule } from 'apollo-angular';
 import { client } from '../graphql.client';
@@ -29,7 +29,10 @@ import {
   MatMenuModule,
   MatButtonModule,
   MatIconModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatInputModule,
+  MatStepperModule,
+  MatSelectModule
 } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import 'hammerjs';
@@ -56,6 +59,9 @@ import { RestTesterComponent } from './ibmbpm/rest-tester/rest-tester.component'
 import { TestingSuitesComponent } from './ibmbpm/testing-suites/testing-suites.component';
 import { LoanProcessComponent } from './ibmbpm/testing-suites/loan-process/loan-process.component';
 
+//import service
+
+import {LoanService} from './ibmbpm/testing-suites/loan-process/loan.service';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -102,8 +108,11 @@ type StoreType = {
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
+    MatInputModule,
     MatExpansionModule,
     MatTabsModule,
+    MatStepperModule,
+    MatSelectModule,
 
 	NoConflictStyleCompatibilityMode,  // from 'Mat2'
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
@@ -114,7 +123,8 @@ type StoreType = {
    */
   providers: [
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    LoanService
   ]
 })
 export class AppModule {

@@ -1,6 +1,18 @@
-h4{
-    float: left;
-}
-.run-button{
+h3{
     text-align: center;
 }
+#runBt{
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }

@@ -4,6 +4,7 @@ import authRoutes from './auth.route';
 import postRoutes from './post.route';
 import ibmbpmRoutes from './ibmbpm.route';
 import testingSuitesRoutes from './testing-suites.route';
+import loanProcessRoutes from './loan-process.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -23,5 +24,7 @@ router.use('/posts', postRoutes);
 router.use('/ibmbpm', ibmbpmRoutes);
 
 router.use('/exposedProcess', testingSuitesRoutes);
+
+router.use('/loanProcess',loanProcessRoutes);
 
 export default router;

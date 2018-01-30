@@ -2,6 +2,9 @@
     width: 200px;
     height: 40px;
 }
+h4{
+    margin: auto;
+}
 
 .mat-menu .mat-menu-item{
     width: 25%;
