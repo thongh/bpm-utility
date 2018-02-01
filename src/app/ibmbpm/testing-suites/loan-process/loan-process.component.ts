@@ -18,8 +18,10 @@ export class LoanProcessComponent implements OnInit {
   @Input() processDetail:any;
   private listTask:any[]=[];
   private instanceID:number;
-  private taskID:number;
-  private rForm: FormGroup;
+  private taskParams:any;
+  private step1Form: FormGroup;
+  private step2Form: FormGroup;
+  private step3Form: FormGroup;
   private reason=[
     {name:'house', value:'Buy a house'},
     {name:'car', value:'Buy a car'},
@@ -28,12 +30,18 @@ export class LoanProcessComponent implements OnInit {
   ]
 
   constructor(private http:Http, private loanService: LoanService, private fb:FormBuilder){
-    this.rForm = fb.group({
+    this.step1Form = fb.group({
       'isSubmitted':[null, Validators.required],
       'loanData':fb.group({
         'amount':[null, Validators.required],
         'reason':[null, Validators.required]
       })
+    });
+    this.step2Form = fb.group({
+      'isApproved':[null, Validators.required]
+    });
+    this.step3Form = fb.group({
+      'isApproved':[null,Validators.required]
     });
   }
   ngOnInit() {
@@ -51,6 +59,7 @@ export class LoanProcessComponent implements OnInit {
     this.http.get('/api/loanProcess',params).map(res=>res.json()).subscribe(data=>{
       this.listTask[0]= data.data.tasks[0]; //get info detail of list process
       this.instanceID = data.data.piid; //get instances ID
+      //this.taskParams = this.listTask[0].data.variables;
     });
   }
 
@@ -62,8 +71,6 @@ export class LoanProcessComponent implements OnInit {
   };
 
   checkState(instanceID,listTask){
-    setTimeout(()=>{
-      this.loanService.checkState(instanceID,listTask)
-    }, 1000);
+    this.loanService.checkState(instanceID,listTask)
   }
 }

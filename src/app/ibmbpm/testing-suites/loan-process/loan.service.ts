@@ -24,8 +24,13 @@ export class LoanService {
         "piid": instanceID
       }
     });
-    this.http.get('/api/loanProcess/checkProcess',options).map(res=>res.json()).subscribe(data=>{
-      listTask[1]=data.data.tasks[1];
-    });
+      this.http.get('/api/loanProcess/checkProcess',options).map(res=>res.json()).subscribe(data=>{
+        let checker = data.data.tasks;
+        if(checker.length == listTask.length){
+          alert("Server had no new task!");
+        }else{
+          listTask[listTask.length]=data.data.tasks[listTask.length];
+        }
+      });  
   }
 }

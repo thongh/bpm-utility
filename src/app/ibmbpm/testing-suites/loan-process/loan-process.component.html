@@ -1,8 +1,9 @@
 <h3>LOAN PROCESS</h3>
 <button mat-button (click)="runClick()" id="runBt">Run</button>
 <mat-vertical-stepper>
+  <!-- step1-->
     <mat-step *ngIf="listTask.length > 0"  label= {{listTask[0].displayName}}>
-      <form [formGroup]="rForm" class="form-container" >
+      <form [formGroup]="step1Form">
         <form formGroupName="loanData">
             <mat-form-field>
                 <input matInput formControlName="amount" placeholder="Amount">
@@ -19,15 +20,41 @@
                 <mat-option value="false">No</mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-button (click)="finishTask(listTask[0],rForm.value)">Complete</button>
       </form>
+      <!--<form>
+        <mat-form-field *ngFor="let item of taskParams">
+          <input matInput placeholder={{item}}>
+        </mat-form-field>
+      </form>
+      <button mat-button (click)="checkItem()">Complete</button>-->
+      <button mat-button (click)="finishTask(listTask[0],step1Form.value)">Complete</button>
       <button mat-button (click)="checkState(instanceID, listTask)" matStepperNext>Next</button>
     </mat-step>
+    <!-- step2-->
     <mat-step *ngIf="listTask.length >1" label = {{listTask[1].displayName}}>
-      <!--<button mat-button (click)="finishTask(listTask[1])" >Complete</button>
-      <button mat-button (click)="checkState(instanceID, listTask)" matStepperNext>Next</button>-->
+      <form [formGroup]="step2Form">
+        <mat-form-field>
+          <mat-select formControlName="isApproved" placeholder="Approval">
+              <mat-option value="true">Yes</mat-option>
+              <mat-option value="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <button mat-button (click)="finishTask(listTask[1],step2Form.value)">Complete</button>
+      <button mat-button (click)="checkState(instanceID, listTask)" matStepperNext>Next</button>
     </mat-step>
+
+    <!--step 3-->
     <mat-step *ngIf="listTask.length >2" label = {{listTask[2].displayName}}>
-      Step 3
+        <form [formGroup]="step3Form">
+            <mat-form-field>
+              <mat-select formControlName="isApproved" placeholder="Approval">
+                  <mat-option value="true">Yes</mat-option>
+                  <mat-option value="false">No</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </form>
+      <button mat-button (click)="finishTask(listTask[2],step3Form.value)">Complete</button>
+      <button mat-button (click)="checkState(instanceID, listTask)" matStepperNext>Next</button>
     </mat-step>
 </mat-vertical-stepper>

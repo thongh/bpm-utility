@@ -41,13 +41,16 @@ function checkCurrentState(request,response){
         }
     }
     var reqGet = https.request(optionget, (res)=>{
-        var result="";
-        res.on('data', function(d){
-            result+=d;
-        });
-        res.on('end',function(){
-            response.send(result);
-        });
+        var result;
+        var obj;
+        var listTask;
+            result="";
+            res.on('data', function(d){
+                result+=d;
+            });
+            res.on('end',function(){ 
+                response.send(result);
+            });
         res.on('error',function(e){
             console.log("Got error:" + e.message);
         });
