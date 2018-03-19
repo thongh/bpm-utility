@@ -6,19 +6,7 @@ export class LoanService {
 
   constructor(private http:Http) { }
   
-  public finishTask(task:any, obj:string){
-    let option=new RequestOptions({
-      params:{
-        "tkiid":task.tkiid,
-        "args":obj
-      }
-    });
-    //finish the task
-    this.http.get('/api/loanProcess/finishTask',option).subscribe();
-  }
-  
-  
-  public checkState(instanceID,listTask){
+  public checkState(instanceID,listTask,callback){
     let options= new RequestOptions({
       params:{
         "piid": instanceID
@@ -30,7 +18,19 @@ export class LoanService {
           alert("Server had no new task!");
         }else{
           listTask[listTask.length]=data.data.tasks[listTask.length];
+          callback();
         }
       });  
+  }
+
+  public finishTask(listTask, obj, instanceID){
+    let option=new RequestOptions({
+      params:{
+        "tkiid":listTask.tkiid,
+        "args":obj.params
+      }
+    });
+    //finish the task
+    this.http.get('/api/loanProcess/finishTask',option).subscribe(data=>{});
   }
 }

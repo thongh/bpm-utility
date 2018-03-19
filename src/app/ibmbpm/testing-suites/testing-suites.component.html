@@ -1,11 +1,15 @@
-<button mat-button [matMenuTriggerFor]="menuRef">
-    <h4>PROCESS</h4>
-</button>
-<mat-menu #menuRef="matMenu">
-    <button mat-menu-item *ngFor="let item of listProc; let i = index" (click)="onClick(i)">
-        {{item.display}}
-    </button>
-</mat-menu>
-<div *ngIf="selector==7">
-    <app-loan-process [processDetail]="processDetail"></app-loan-process>
+<div class="container">
+    <div class="process-button">
+        <button mat-button [matMenuTriggerFor]="menuRef">
+            <h4>BUSINESS PROCESS</h4>
+        </button>
+    </div>
+    <mat-menu #menuRef="matMenu">
+        <button mat-menu-item *ngFor="let item of listProc; let i = index" (click)="onClick(i)">
+            {{item.display}}
+        </button>
+    </mat-menu>
+    <div *ngIf="selector==9">
+        <app-loan-process [processDetail]="processDetail"></app-loan-process>
+    </div>
 </div>

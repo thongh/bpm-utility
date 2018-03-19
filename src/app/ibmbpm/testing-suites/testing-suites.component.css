@@ -1,11 +1,17 @@
+.container{
+    padding: auto;
+}
+.process-button{
+    padding: 64px 0 0 0;
+    position: fixed;
+}
 .mat-button {
     width: 200px;
     height: 40px;
 }
 h4{
-    margin: auto;
+    margin:auto
 }
-
 .mat-menu .mat-menu-item{
     width: 25%;
     height: 40px;

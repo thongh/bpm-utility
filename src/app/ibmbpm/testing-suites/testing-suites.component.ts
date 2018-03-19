@@ -29,6 +29,6 @@ export class TestingSuitesComponent implements OnInit {
   onClick(index){
     this.selector=index;
     //gain the info detail for loanProcess component
-    this.processDetail = this.listProc[7];
+    this.processDetail = this.listProc[9];
   }
 }
