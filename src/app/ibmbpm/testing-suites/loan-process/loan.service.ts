@@ -14,11 +14,15 @@ export class LoanService {
     });
       this.http.get('/api/loanProcess/checkProcess',options).map(res=>res.json()).subscribe(data=>{
         let checker = data.data.tasks;
-        if(checker.length == listTask.length){
-          alert("Server had no new task!");
+        if(data.data.state=="STATE_FINISHED"){
+          alert("FINISHED!");
         }else{
-          listTask[listTask.length]=data.data.tasks[listTask.length];
-          callback();
+          if(checker.length == listTask.length){//if bpm server have no new task yet
+            this.checkState(instanceID,listTask,callback);//call checkstate again until have new task return
+          }else{
+            listTask[listTask.length]=data.data.tasks[listTask.length];//gain next task to the listTask
+            callback();//finish next task
+          }
         }
       });  
   }

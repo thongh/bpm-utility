@@ -15,6 +15,25 @@
     {
         "name":"Approval Task 1",
         "params":{
+            "isApproved":"false"
+        }
+    },
+    {
+        "name":"Data entry",
+        "params":{
+            "isSubmitted":"true",
+            "loanData":{
+                "amount":150000,
+                "reason":{
+                    "name":"study",
+                    "value":"Study Loan"
+                }
+            }
+        }
+    },
+    {
+        "name":"Approval Task 1",
+        "params":{
             "isApproved":"true"
         }
     },

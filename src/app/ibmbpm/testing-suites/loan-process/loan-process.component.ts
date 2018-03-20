@@ -36,42 +36,19 @@ export class LoanProcessComponent implements OnInit {
       this.listTask[0]= data.data.tasks[0]; //get info detail of list process
       this.instanceID = data.data.piid; //get instances ID
       //finish the task
-      var self=this;      
+      var self=this;
+      var index=1;      
       this.loanService.finishTask(this.listTask[0], this.testCase[0], this.instanceID);
-      /*var index=0;
-      this.task(index, self);*/
-      setTimeout(() => {
-        this.loanService.checkState(this.instanceID, this.listTask, function(){
-          self.loanService.finishTask(self.listTask[1], self.testCase[1], self.instanceID);
-          setTimeout(() => {
-            self.loanService.checkState(self.instanceID, self.listTask, function(){
-              self.loanService.finishTask(self.listTask[2], self.testCase[2],self.instanceID);
-            });
-          }, 10000);
-        });
-      }, 3000);
+      this.task(index,self);
     });
   }
 
-  task(i, self){
+  task(i,self){
     setTimeout(() => {
       self.loanService.checkState(self.instanceID, self.listTask, function(){
         self.loanService.finishTask(self.listTask[i], self.testCase[i], self.instanceID);
-        self.task(i+1);
+        self.task(i+1, self);
       });
-    }, 3000);
-  }
-  test(){
-    for (let index = 0; index < 3; index++) {
-      setTimeout(() => {
-        console.log(index);
-      }, 2000);
-      /*await new Promise(next=>{
-        setTimeout(() => {
-          console.log(index);
-        }, 2000);
-        next();
-      });  */    
-    }
+    }, 10000);
   }
 }
