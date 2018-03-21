@@ -26,7 +26,9 @@ import { PostsService } from './posts/posts.service';
 	    	<a class="links" [routerLink]="['/ibmbpm']">IBM BPM TESTING</a>
       </mat-toolbar>
     </header>
-    <router-outlet></router-outlet>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
     <footer>
     </footer>
   `,

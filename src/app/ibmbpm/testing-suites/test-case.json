@@ -1,6 +1,6 @@
 [
     {
-        "name":"Data entry",
+        "name":"Data entry 1",
         "params":{
             "isSubmitted":"true",
             "loanData":{
@@ -19,7 +19,7 @@
         }
     },
     {
-        "name":"Data entry",
+        "name":"Data entry 1",
         "params":{
             "isSubmitted":"true",
             "loanData":{

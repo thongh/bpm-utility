@@ -32,6 +32,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatStepperModule,
+  MatProgressSpinnerModule,
   MatSelectModule
 } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -57,11 +58,10 @@ import '../styles/headings.css';
 import { IbmbpmComponent } from './ibmbpm/ibmbpm.component';
 import { RestTesterComponent } from './ibmbpm/rest-tester/rest-tester.component';
 import { TestingSuitesComponent } from './ibmbpm/testing-suites/testing-suites.component';
-import { LoanProcessComponent } from './ibmbpm/testing-suites/loan-process/loan-process.component';
 
 //import service
 
-import {LoanService} from './ibmbpm/testing-suites/loan-process/loan.service';
+import {TestingSuitesService} from './ibmbpm/testing-suites/testing-suites.service';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -87,8 +87,7 @@ type StoreType = {
     NoContentComponent,
     IbmbpmComponent,
     RestTesterComponent,
-    TestingSuitesComponent,
-    LoanProcessComponent,
+    TestingSuitesComponent
   ],
   /**
    * Import Angular's modules.
@@ -112,6 +111,7 @@ type StoreType = {
     MatExpansionModule,
     MatTabsModule,
     MatStepperModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
 
 	NoConflictStyleCompatibilityMode,  // from 'Mat2'
@@ -124,7 +124,7 @@ type StoreType = {
   providers: [
     ENV_PROVIDERS,
     APP_PROVIDERS,
-    LoanService
+    TestingSuitesService
   ]
 })
 export class AppModule {

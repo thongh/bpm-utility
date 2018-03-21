@@ -12,22 +12,7 @@ import 'rxjs/add/operator/map';
 export class IbmbpmComponent implements OnInit {
 
   constructor(private http: Http) { 
-//      this.clickMessage = '';
-//      this.restStatus;
-//      this.restBody = '';
   }
-
-//  public onClickMe() {
-//    this.clickMessage = 'Calling a REST API...';
-//    this.restStatus = 'n/a';
-//    this.http.get("/api/ibmbpm")
-//      .subscribe((data) => {
-//    console.log(data);
-//    this.clickMessage = "DONE";
-//    this.restStatus = data.status;
-//    });
-//  }
-
   public ngOnInit(): void {
     // TODO Auto-generated method stub
     return;

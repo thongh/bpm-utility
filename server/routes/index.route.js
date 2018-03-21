@@ -23,7 +23,7 @@ router.use('/posts', postRoutes);
 
 router.use('/ibmbpm', ibmbpmRoutes);
 
-router.use('/exposedProcess', testingSuitesRoutes);
+router.use('/testingSuites', testingSuitesRoutes);
 
 router.use('/loanProcess',loanProcessRoutes);
 

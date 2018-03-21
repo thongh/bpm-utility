@@ -9,7 +9,20 @@
             {{item.display}}
         </button>
     </mat-menu>
-    <div *ngIf="selector==9">
-        <app-loan-process [processDetail]="processDetail"></app-loan-process>
+    <div *ngIf="selectorName!=null">
+        <div class="testing-process">
+            <h3>{{selectorName}}</h3>
+            <div class="run-button">
+                <button mat-button (click)="runClick()" id="runBt">Run</button>
+                <mat-progress-spinner class="startSpinner" [mode]="modeSpinner" color="primary"></mat-progress-spinner>
+            </div>
+        </div>
+        <div class="result">
+            <mat-list >
+                <mat-list-item class="taskButton" *ngFor="let item of listTask">
+                    <button mat-button >{{item.displayName}}</button>
+                </mat-list-item>
+            </mat-list>
+        </div>
     </div>
 </div>
