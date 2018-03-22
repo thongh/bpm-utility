@@ -8,7 +8,7 @@ import { TestingSuitesService } from './testing-suites.service';
 @Component({
   selector: 'app-testing-suites',
   templateUrl: './testing-suites.component.html',
-  styleUrls: ['./testing-suites.component.css'],
+  styleUrls: ['./testing-suites.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class TestingSuitesComponent implements OnInit {
@@ -20,6 +20,8 @@ export class TestingSuitesComponent implements OnInit {
   private instanceID:number;
   private testCase:any;
   private processDetail:any;
+  private self:any;
+  private index: number;
   constructor(private http:Http, private TestingSuitesService:TestingSuitesService) {
    }
 
@@ -35,9 +37,11 @@ export class TestingSuitesComponent implements OnInit {
   onClick(index){
     this.selectorName=this.listProc[index].display;
     this.processDetail= this.listProc[index];
+    this.listTask=[];
   }
   runClick(){
     this.modeSpinner="indeterminate";
+    this.listTask=[];
     //create variable to content the parameter such as itemID, processAppID
     let params= new RequestOptions({
       params: {
@@ -50,19 +54,31 @@ export class TestingSuitesComponent implements OnInit {
     this.http.get('/api/testingSuites',params).map(res=>res.json()).subscribe(data=>{
       this.instanceID = data.data.piid; //get instances ID
       //finish the task
-      var self=this;
-      var index=0;      
-      this.task(index,self);
+      this.self=this;
+      this.index=0;      
+      this.task(this.index,this.self);
     });
   }
 
   task(i,self){
-    //self.TestingSuitesService.finishTask(this.listTask[i], this.testCase[i], this.instanceID);
+    self.modeSpinner="indeterminate";
     setTimeout(() => {
-      self.TestingSuitesService.checkState(self.testCase, self.instanceID, self.listTask, function(){
-        self.TestingSuitesService.finishTask(self.listTask[i], self.testCase[i], self.instanceID);
-        self.task(i+1, self);
-      });
-    }, 10000);
+      self.TestingSuitesService.checkState(self.modeSpinner, self.testCase, self.instanceID, self.listTask, 
+        function(){
+          self.TestingSuitesService.finishTask(self.listTask[i], self.testCase[i], self.instanceID);
+          self.task(i+1, self);
+        },
+        function(){
+          self.modeSpinner="determinate";
+        },
+        function(){
+          self.modeSpinner="paused";
+        }        
+      );
+    }, 2500);
+  }
+  test(){
+    console.log(this.listTask.length);
+    console.log(this.index);
   }
 }

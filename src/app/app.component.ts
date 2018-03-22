@@ -21,7 +21,7 @@ import { PostsService } from './posts/posts.service';
   ],
   template: `
     <header>
-      <mat-toolbar color="primary">
+      <mat-toolbar color="primary" class="toolbar">
         <a [routerLink]="['/']" class="logotTxt">Business Process Manager</a>
 	    	<a class="links" [routerLink]="['/ibmbpm']">IBM BPM TESTING</a>
       </mat-toolbar>

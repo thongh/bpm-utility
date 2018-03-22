@@ -1,28 +1,34 @@
 <div class="container">
-    <div class="process-button">
-        <button mat-button [matMenuTriggerFor]="menuRef">
-            <h4>BUSINESS PROCESS</h4>
-        </button>
-    </div>
-    <mat-menu #menuRef="matMenu">
-        <button mat-menu-item *ngFor="let item of listProc; let i = index" (click)="onClick(i)">
-            {{item.display}}
-        </button>
-    </mat-menu>
-    <div *ngIf="selectorName!=null">
-        <div class="testing-process">
-            <h3>{{selectorName}}</h3>
-            <div class="run-button">
-                <button mat-button (click)="runClick()" id="runBt">Run</button>
-                <mat-progress-spinner class="startSpinner" [mode]="modeSpinner" color="primary"></mat-progress-spinner>
+    <mat-sidenav-container class="side-nav-container" >
+        <mat-sidenav class="side-nav" #drawer mode="over" opened>
+            <button mat-button *ngFor="let item of listProc; let i = index" (click)="onClick(i)" (click)="drawer.toggle()">
+                {{item.display}}
+            </button>
+        </mat-sidenav>
+        <div class="example-sidenav-content">
+            <button mat-icon-button (click)="drawer.toggle()">
+              <mat-icon class="mat-24">toc</mat-icon>
+            </button>
+        </div>
+        <div *ngIf="selectorName!=null">
+            <div class="testing-process">
+                <h3>{{selectorName}}</h3>
+                <div class="run-button">
+                    <button mat-button *ngIf="modeSpinner=='paused'" [disabled]="modeSpinner=='determinate' || modeSpinner!='paused'" (click)="task(listTask.length,self)">Continue testing</button>
+                    <button mat-button *ngIf="modeSpinner=='determinate' || modeSpinner=='paused'" (click)="runClick()" id="runBt" >Run</button>
+                    <mat-progress-spinner *ngIf="modeSpinner=='indeterminate'" [diameter]="50" style="margin:0 auto" [mode]="modeSpinner" color="primary"></mat-progress-spinner>
+                </div>
+            </div>
+            <div class="result" *ngIf="listTask!=null">
+                <mat-expansion-panel *ngFor="let item of listTask">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{item.displayName}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    {{item.status}}
+                </mat-expansion-panel>
             </div>
         </div>
-        <div class="result">
-            <mat-list >
-                <mat-list-item class="taskButton" *ngFor="let item of listTask">
-                    <button mat-button >{{item.displayName}}</button>
-                </mat-list-item>
-            </mat-list>
-        </div>
-    </div>
+    </mat-sidenav-container>
 </div>

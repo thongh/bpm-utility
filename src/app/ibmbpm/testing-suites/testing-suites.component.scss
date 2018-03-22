@@ -1,0 +1,26 @@
+.container{
+    min-height: 100vh;
+}
+.side-nav-container{
+    width: 100%;
+    min-height: 100vh;
+}
+mat-sidenav{
+    width: 20%;
+    height: 100%;
+}
+body mat-sidenav [mat-button]{
+    margin: auto;
+}
+h3{
+    text-align: center;
+}
+.run-button{
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+}
+.result{
+    width: 100%;
+    min-height: 100vh;
+}
