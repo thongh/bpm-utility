@@ -30,11 +30,10 @@ function exposedProcess(request, response){
     reqGet.end();
 };
 function startProcess(request, response){
-    console.log("starting process...");
     var optionget={
         host: '192.168.0.113',
         port: 9443,
-        path: '/rest/bpm/wle/v1/process?action=start&bpdId=25.5957d788-280a-4f0f-a188-43124232dcce&processAppId=2066.042f4689-596e-43cc-9f21-6035dd373067&parts=all',
+        path: '/rest/bpm/wle/v1/process?action=start&bpdId='+request.query.itemID+'&processAppId='+request.query.processAppID+'&parts=all',
         method: 'POST',
         headers : {
 		    Authorization: 'Basic ' + new Buffer('phuoc:Pa55w0rd').toString('base64')

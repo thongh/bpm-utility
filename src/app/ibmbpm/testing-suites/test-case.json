@@ -3,44 +3,9 @@
         "name":"Data entry 1",
         "params":{
             "isSubmitted":"true",
-            "loanData":{
-                "amount":100000,
-                "reason":{
-                    "name":"study",
-                    "value":"Study Loan"
-                }
-            }
-        }
-    },
-    {
-        "name":"Approval Task 1",
-        "params":{
-            "isApproved":"false"
-        }
-    },
-    {
-        "name":"Data entry 1",
-        "params":{
-            "isSubmitted":"true",
-            "loanData":{
-                "amount":150000,
-                "reason":{
-                    "name":"study",
-                    "value":"Study Loan"
-                }
-            }
-        }
-    },
-    {
-        "name":"Approval Task 1",
-        "params":{
-            "isApproved":"true"
-        }
-    },
-    {
-        "name":"Approval Task 2",
-        "params":{
-            "isApproved":"true"
+            "Name":"ABC",
+            "Insurance":142563241,
+            "Reason":"Multiple"
         }
     }
 ]
