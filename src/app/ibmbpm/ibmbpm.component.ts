@@ -1,5 +1,5 @@
 console.log("Angular src - ibmbpm.component.ts - START");
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -10,11 +10,12 @@ import 'rxjs/add/operator/map';
   encapsulation: ViewEncapsulation.None
 })
 export class IbmbpmComponent implements OnInit {
-
+  @Input() credentials:any;
   constructor(private http: Http) { 
   }
   public ngOnInit(): void {
     // TODO Auto-generated method stub
+    console.log(this.credentials);
     return;
   }
 }

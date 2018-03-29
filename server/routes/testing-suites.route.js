@@ -22,5 +22,9 @@ router.get('/finishTask',(req,res)=>{
     console.log("finish the task");
     testingSuitesCtrl.finishTask(req,res);
 });
+router.get('/claimTask',(req,res)=>{
+    console.log("claim the task");
+    testingSuitesCtrl.claimTask(req,res);
+});
 
 export default router;

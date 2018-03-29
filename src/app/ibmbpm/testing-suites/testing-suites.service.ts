@@ -16,8 +16,13 @@ export class TestingSuitesService {
       this.http.get('/api/testingSuites/checkProcess',options).map(res=>res.json()).subscribe(data=>{
         let checker = data.data.tasks;
         if(data.data.state=="STATE_FINISHED"){
-          alert("FINISHED!");
-          changeModeSpinner();
+          if(testCase[listTask.length]){
+            alert("Failed! It's not correspondent with your testcase.");
+            changeModeSpinner();
+          }else{
+            alert("TESTING SUCCESS!");
+            changeModeSpinner();
+          }          
         }else{
           if(checker.length == listTask.length){//if bpm server have no new task yet
             this.checkState(modeSpinner,testCase,instanceID,listTask,finishTask,changeModeSpinner,pause);//call checkstate again until have new task return
@@ -34,15 +39,25 @@ export class TestingSuitesService {
       });  
   }
 
-  public finishTask(listTask, obj, instanceID){
+  public finishTask(listTask, obj, instanceID, callback,changeModeSpinner){
     let option=new RequestOptions({
       params:{
         "tkiid":listTask.tkiid,
         "args":obj.params
       }
     });
-    //finish the task
-    this.http.get('/api/testingSuites/finishTask',option).subscribe(data=>{});
+    //claim the task
+    this.http.get('/api/testingSuites/claimTask',option).map(res=>res.json()).subscribe(data=>{
+      //finish the task
+      this.http.get('/api/testingSuites/finishTask',option).map(res=>res.json()).subscribe(data=>{
+        if(data.status=="error"){
+          alert(data.Data.errorMessage);
+          changeModeSpinner();
+        }else{
+          callback();
+        }
+      });
+    });
   }
 
 }

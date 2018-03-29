@@ -3,7 +3,7 @@ console.log("Angular src - app.module.ts - START");
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { NoConflictStyleCompatibilityMode, MatStepper } from '@angular/material';
+import { NoConflictStyleCompatibilityMode, MatStepper, MatDialogModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ApolloModule } from 'apollo-angular';
 import { client } from '../graphql.client';
@@ -33,6 +33,7 @@ import {
   MatInputModule,
   MatStepperModule,
   MatProgressSpinnerModule,
+  MatProgressBarModule,
   MatSelectModule
 } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -62,6 +63,7 @@ import { TestingSuitesComponent } from './ibmbpm/testing-suites/testing-suites.c
 //import service
 
 import {TestingSuitesService} from './ibmbpm/testing-suites/testing-suites.service';
+import { LoginComponent } from './login/login.component';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -87,7 +89,8 @@ type StoreType = {
     NoContentComponent,
     IbmbpmComponent,
     RestTesterComponent,
-    TestingSuitesComponent
+    TestingSuitesComponent,
+    LoginComponent
   ],
   /**
    * Import Angular's modules.
@@ -112,11 +115,15 @@ type StoreType = {
     MatTabsModule,
     MatStepperModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatSelectModule,
-
+    MatDialogModule,
 	NoConflictStyleCompatibilityMode,  // from 'Mat2'
     RouterModule.forRoot(ROUTES, { useHash: false, preloadingStrategy: PreloadAllModules }),
     ApolloModule.forRoot(client),
+  ],
+  entryComponents:[
+    LoginComponent
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

@@ -65,8 +65,14 @@ export class TestingSuitesComponent implements OnInit {
     setTimeout(() => {
       self.TestingSuitesService.checkState(self.modeSpinner, self.testCase, self.instanceID, self.listTask, 
         function(){
-          self.TestingSuitesService.finishTask(self.listTask[i], self.testCase[i], self.instanceID);
-          self.task(i+1, self);
+          self.TestingSuitesService.finishTask(self.listTask[i], self.testCase[i], self.instanceID, 
+            function(){
+            self.task(i+1, self);
+            },
+            function(){
+              self.modeSpinner="determinate";
+            }
+          );
         },
         function(){
           self.modeSpinner="determinate";
@@ -78,7 +84,5 @@ export class TestingSuitesComponent implements OnInit {
     }, 2500);
   }
   test(){
-    console.log(this.listTask.length);
-    console.log(this.index);
   }
 }

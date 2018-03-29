@@ -1,0 +1,33 @@
+<h3>BPM Testing Tool</h3>
+<div>
+  <label>Username</label>
+  <br>
+  <mat-input-container>
+  <input matInput type="text" #username>
+</mat-input-container>
+  <br>
+
+  <label>Password</label>
+  <br>
+  <mat-input-container>
+  <input matInput type="password" #password >
+</mat-input-container>
+<br>
+<label>IP Address</label>
+  <br>
+  <mat-input-container>
+  <input matInput type="text" #ip>
+</mat-input-container>
+  <br>
+  <label>Host</label>
+  <br>
+  <mat-input-container>
+  <input matInput type="text" #host>
+</mat-input-container>
+  <br>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="popup-btn" (click)="dialogRef.close({username: username.value, password: password.value, ipaddress:ip.value, host:host.value})">
+    Submit
+  </button>
+</div>

@@ -1,5 +1,6 @@
 <div class="container">
     <mat-sidenav-container class="side-nav-container" >
+        <mat-progress-bar  [mode]="modeSpinner" color="primary"></mat-progress-bar>
         <mat-sidenav class="side-nav" #drawer mode="over" opened>
             <button mat-button *ngFor="let item of listProc; let i = index" (click)="onClick(i)" (click)="drawer.toggle()">
                 {{item.display}}
@@ -20,14 +21,30 @@
                 </div>
             </div>
             <div class="result" *ngIf="listTask!=null">
-                <mat-expansion-panel *ngFor="let item of listTask">
+                <table align="center">
+                    <tr>
+                        <th>Task</th>
+                        <th>Total</th>
+                        <th>Passed</th>
+                        <th>Failed</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr *ngFor="let item of testCase">
+                        <td>{{item.name}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <!--<mat-expansion-panel *ngFor="let item of listTask">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             {{item.displayName}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
                     {{item.status}}
-                </mat-expansion-panel>
+                </mat-expansion-panel>-->
             </div>
         </div>
     </mat-sidenav-container>

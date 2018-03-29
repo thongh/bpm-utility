@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { AppState } from './app.service';
 import { PostsService } from './posts/posts.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { LoginComponent } from './login/login.component';
 /**
  * App Component
  * Top Level Component
@@ -38,13 +40,32 @@ export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
   public name = 'Mean stack starter';
   public url = 'https://mean.io';
+  public dialogRef: MatDialogRef<LoginComponent>;
+  public credentials={
+    username:"",
+    password:"",
+    ipaddress:"",
+    host:0
+  }
 
   constructor(
-    public appState: AppState
-  ) { }
+    public appState: AppState,
+    public dialog:MatDialog
+  ) {
+    this.openDialog();
+   }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+  }
+  openDialog(){
+    this.dialogRef = this.dialog.open(LoginComponent);
+    this.dialogRef.afterClosed().subscribe(result=>{
+      this.credentials.username=result.username;
+      this.credentials.password=result.password;
+      this.credentials.ipaddress=result.ipaddress;
+      this.credentials.host=Number(result.host);
+    });
   }
 
 }
