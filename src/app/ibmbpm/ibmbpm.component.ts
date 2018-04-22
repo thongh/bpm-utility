@@ -10,12 +10,11 @@ import 'rxjs/add/operator/map';
   encapsulation: ViewEncapsulation.None
 })
 export class IbmbpmComponent implements OnInit {
-  @Input() credentials:any;
+  private credentials:any;
   constructor(private http: Http) { 
   }
   public ngOnInit(): void {
     // TODO Auto-generated method stub
-    console.log(this.credentials);
     return;
   }
 }

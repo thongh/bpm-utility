@@ -11,6 +11,7 @@ import { AppState } from './app.service';
 import { PostsService } from './posts/posts.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { LoginComponent } from './login/login.component';
+import {Http, RequestOptions} from '@angular/http';
 /**
  * App Component
  * Top Level Component
@@ -21,19 +22,9 @@ import { LoginComponent } from './login/login.component';
   styleUrls: [
     './app.component.scss'
   ],
-  template: `
-    <header>
-      <mat-toolbar color="primary" class="toolbar">
-        <a [routerLink]="['/']" class="logotTxt">Business Process Manager</a>
-	    	<a class="links" [routerLink]="['/ibmbpm']">IBM BPM TESTING</a>
-      </mat-toolbar>
-    </header>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-    <footer>
-    </footer>
-  `,
+  templateUrl:'./app.component.html',
+    
+
   providers: [PostsService]
 })
 export class AppComponent implements OnInit {
@@ -41,16 +32,16 @@ export class AppComponent implements OnInit {
   public name = 'Mean stack starter';
   public url = 'https://mean.io';
   public dialogRef: MatDialogRef<LoginComponent>;
-  public credentials={
+  private auth={
     username:"",
-    password:"",
-    ipaddress:"",
-    host:0
+    host:"",
+    port:0
   }
 
   constructor(
     public appState: AppState,
-    public dialog:MatDialog
+    public dialog:MatDialog,
+    private http:Http
   ) {
     this.openDialog();
    }
@@ -61,10 +52,19 @@ export class AppComponent implements OnInit {
   openDialog(){
     this.dialogRef = this.dialog.open(LoginComponent);
     this.dialogRef.afterClosed().subscribe(result=>{
-      this.credentials.username=result.username;
-      this.credentials.password=result.password;
-      this.credentials.ipaddress=result.ipaddress;
-      this.credentials.host=Number(result.host);
+      let option= new RequestOptions({
+        params:{
+          "credentials":{
+            'auth':result.username+':'+result.password,
+            'host':result.host,
+            'port': result.port
+          }
+        }
+      });
+      this.http.get('/api/appAuth',option).subscribe();
+      this.auth.username=result.username;
+      this.auth.host=result.host;
+      this.auth.port=result.port
     });
   }
 

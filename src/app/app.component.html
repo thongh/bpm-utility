@@ -1,0 +1,27 @@
+<header>
+    <mat-toolbar color="primary" class="toolbar">
+      <a [routerLink]="['/']" class="logotTxt">Business Process Manager</a>
+      <a [routerLink]="['/ibmbpm']" class="links">IBM BPM TESTING</a>
+      <div class="auth">
+        <button mat-button [matMenuTriggerFor]="menuRef">
+            {{auth.username}}
+        </button>
+        <mat-menu #menuRef="matMenu">
+            <button mat-menu-item>
+                  {{auth.host}}
+            </button>
+            <button mat-menu-item>
+                  {{auth.port}}
+            </button>
+            <button mat-menu-item (click)="openDialog()">
+                  Change
+            </button>
+        </mat-menu>
+      </div>
+    </mat-toolbar>
+</header>
+<div>
+    <router-outlet></router-outlet>
+</div>
+<footer>
+</footer>

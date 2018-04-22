@@ -1,16 +1,17 @@
 import request from 'request';
 import https from 'https';
+import appCtrl from './app.controller'
 
 /*call list of process*/
 
-function exposedProcess(request, response){
+function exposedProcess(request, response){   
     var optionget={
-        host: '192.168.0.113',
-        port: 9443,
+        host: appCtrl.credentials.host,
+        port: appCtrl.credentials.port,
         path:'/rest/bpm/wle/v1/exposed/process',
         method: 'GET',
         headers : {
-		    Authorization: 'Basic ' + new Buffer('phuoc:Pa55w0rd').toString('base64')
+		    Authorization: 'Basic ' + new Buffer(appCtrl.credentials.auth).toString('base64')
 		}
     };
     var reqGet = https.request(optionget, (res)=>{
@@ -31,12 +32,12 @@ function exposedProcess(request, response){
 };
 function startProcess(request, response){
     var optionget={
-        host: '192.168.0.113',
-        port: 9443,
+        host: appCtrl.credentials.host,
+        port: appCtrl.credentials.port,
         path: '/rest/bpm/wle/v1/process?action=start&bpdId='+request.query.itemID+'&processAppId='+request.query.processAppID+'&parts=all',
         method: 'POST',
         headers : {
-		    Authorization: 'Basic ' + new Buffer('phuoc:Pa55w0rd').toString('base64')
+		    Authorization: 'Basic ' + new Buffer(appCtrl.credentials.auth).toString('base64')
         }
     }
     var reqGet = https.request(optionget, (res)=>{
@@ -53,17 +54,18 @@ function startProcess(request, response){
         });
     });
     reqGet.end();
+
 }
 
 function checkCurrentState(request,response){
     console.log("Checking current state of process instance...");
         var optionget={
-        host: '192.168.0.113',
-        port: 9443,
+        host: appCtrl.credentials.host,
+        port: appCtrl.credentials.port,
         path: '/rest/bpm/wle/v1/process/'+request.query.piid+'?parts=all',
         method: 'GET',
         headers : {
-		    Authorization: 'Basic ' + new Buffer('phuoc:Pa55w0rd').toString('base64')
+		    Authorization: 'Basic ' + new Buffer(appCtrl.credentials.auth).toString('base64')
         }
     }
     var reqGet = https.request(optionget, (res)=>{
@@ -93,12 +95,12 @@ function finishTask(request,response){
     result= result.replace(/}/g,'%7D');
     result= result.replace(/ /g,'+');
     var optionget={
-        host: '192.168.0.113',
-        port: 9443,
+        host: appCtrl.credentials.host,
+        port: appCtrl.credentials.port,
         path: '/rest/bpm/wle/v1/task/'+request.query.tkiid+'?action=finish&params='+result+'&parts=all',
         method: 'PUT',
         headers : {
-		    Authorization: 'Basic ' + new Buffer('phuoc:Pa55w0rd').toString('base64')
+		    Authorization: 'Basic ' + new Buffer(appCtrl.credentials.auth).toString('base64')
         }
     }
 
@@ -118,12 +120,12 @@ function finishTask(request,response){
 }
 function claimTask(request,response){
     var optionget={
-        host: '192.168.0.113',
-        port: 9443,
+        host: appCtrl.credentials.host,
+        port: appCtrl.credentials.port,
         path: '/rest/bpm/wle/v1/task/'+request.query.tkiid+'?action=start',
         method: 'PUT',
         headers : {
-		    Authorization: 'Basic ' + new Buffer('phuoc:Pa55w0rd').toString('base64')
+		    Authorization: 'Basic ' + new Buffer(appCtrl.credentials.auth).toString('base64')
         }
     }
 

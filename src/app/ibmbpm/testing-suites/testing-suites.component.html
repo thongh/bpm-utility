@@ -15,6 +15,7 @@
             <div class="testing-process">
                 <h3>{{selectorName}}</h3>
                 <div class="run-button">
+                    <input type="file" (change)="getFile($event)" multiple accept=".json">
                     <button mat-button *ngIf="modeSpinner=='paused'" [disabled]="modeSpinner=='determinate' || modeSpinner!='paused'" (click)="task(listTask.length,self)">Continue testing</button>
                     <button mat-button *ngIf="modeSpinner=='determinate' || modeSpinner=='paused'" (click)="runClick()" id="runBt" >Run</button>
                     <mat-progress-spinner *ngIf="modeSpinner=='indeterminate'" [diameter]="50" style="margin:0 auto" [mode]="modeSpinner" color="primary"></mat-progress-spinner>
@@ -24,27 +25,23 @@
                 <table align="center">
                     <tr>
                         <th>Task</th>
-                        <th>Total</th>
-                        <th>Passed</th>
-                        <th>Failed</th>
                         <th>Status</th>
                     </tr>
-                    <tr *ngFor="let item of testCase">
+                    <tr *ngFor="let item of listTask">
                         <td>{{item.name}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>
+                            <p *ngIf="item.state=='STATE_READY'">
+                                 Loading...
+                            </p>
+                            <p *ngIf="item.state=='Passed'" style="color:green">
+                                {{item.state}}
+                            </p>
+                            <p *ngIf="item.state=='Failed'" style="color:red">
+                                {{item.state}}
+                            </p>
+                        </td>
                     </tr>
                 </table>
-                <!--<mat-expansion-panel *ngFor="let item of listTask">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            {{item.displayName}}
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    {{item.status}}
-                </mat-expansion-panel>-->
             </div>
         </div>
     </mat-sidenav-container>

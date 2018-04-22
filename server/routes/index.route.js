@@ -4,6 +4,7 @@ import authRoutes from './auth.route';
 import postRoutes from './post.route';
 import ibmbpmRoutes from './ibmbpm.route';
 import testingSuitesRoutes from './testing-suites.route';
+import appRoutes from './app.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -23,6 +24,8 @@ router.use('/posts', postRoutes);
 router.use('/ibmbpm', ibmbpmRoutes);
 
 router.use('/testingSuites', testingSuitesRoutes);
+
+router.use('/appAuth',appRoutes);
 
 
 export default router;

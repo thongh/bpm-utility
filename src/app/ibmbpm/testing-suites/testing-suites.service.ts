@@ -20,19 +20,24 @@ export class TestingSuitesService {
             alert("Failed! It's not correspondent with your testcase.");
             changeModeSpinner();
           }else{
-            alert("TESTING SUCCESS!");
+            alert("TESTING COMPLETE!");
             changeModeSpinner();
+            listTask[listTask.length-1].state="Passed";
           }          
         }else{
-          if(checker.length == listTask.length){//if bpm server have no new task yet
+          if(checker.length == listTask.length){//if bpm server has no new task yet
             this.checkState(modeSpinner,testCase,instanceID,listTask,finishTask,changeModeSpinner,pause);//call checkstate again until have new task return
           }else{
             if(data.data.tasks[listTask.length].name == testCase[listTask.length].name){
               listTask[listTask.length]=data.data.tasks[listTask.length];//gain next task to the listTask
+              if(listTask.length >=2){
+                listTask[listTask.length-2].state="Pass";
+              }
               finishTask();//finish next task
             }else{
               alert("Testing has been stopped because flow is wronged or any scripts do not complete yet!");
               pause();
+              listTask[listTask.length-1].state="Failed";
             }
           }
         }
